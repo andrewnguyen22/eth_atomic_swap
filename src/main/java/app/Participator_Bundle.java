@@ -1,7 +1,9 @@
 package app;
-
+/**
+ * This class object holds all of the values
+ * needed for the participant
+ */
 public class Participator_Bundle {
-    private String contract;
     private String contract_tx;
     private byte[] secret;
     private byte[] hash;
@@ -20,14 +22,6 @@ public class Participator_Bundle {
 
     public void setHash(byte[] hash) {
         this.hash = hash;
-    }
-
-    public String getContract() {
-        return contract;
-    }
-
-    public void setContract(String contract) {
-        this.contract = contract;
     }
 
     public String getContract_tx() {

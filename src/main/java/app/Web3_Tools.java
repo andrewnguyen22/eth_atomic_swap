@@ -1,7 +1,7 @@
 package app;
 
+import contracts.AtomicSwap;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthBlock;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
@@ -9,8 +9,10 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import static org.web3j.tx.ManagedTransaction.GAS_PRICE;
+
 public class Web3_Tools {
-    public static BigInteger getGasLimit(Web3j web3) {
+    private static BigInteger getGasLimit(Web3j web3) {
         EthBlock ethBlock = null;
         try {
             ethBlock = web3.ethGetBlockByNumber(DefaultBlockParameterName.PENDING, true).send();
@@ -24,5 +26,14 @@ public class Web3_Tools {
     public static BigInteger getBalance(String addr) throws IOException {
         EthGetBalance ethGetBalance = Global.getWeb3j().ethGetBalance(addr, DefaultBlockParameterName.LATEST).send();
         return ethGetBalance.getBalance();
+    }
+    public static AtomicSwap loadContractWrapper(){
+        return AtomicSwap.load(
+                Global.getParent_contract(),
+                Global.getWeb3j(),
+                Global.getCredentials(),
+                GAS_PRICE,
+                Web3_Tools.getGasLimit(Global.getWeb3j())
+        );
     }
 }

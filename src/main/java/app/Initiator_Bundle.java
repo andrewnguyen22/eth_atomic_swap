@@ -1,15 +1,17 @@
 package app;
-
+/**
+ * This class object holds all of the values
+ * needed for the initiator.
+ */
 public class Initiator_Bundle {
     private byte[] secret;
     private byte[] hash;
-    private String contract;
     private String contract_tx;
     private String initiator_address;
-    Initiator_Bundle(byte[] secret, byte[] hash, String contract, String contract_tx, String initiator_address) {
+
+    Initiator_Bundle(byte[] secret, byte[] hash, String contract_tx, String initiator_address) {
         this.secret = secret;
         this.hash = hash;
-        this.contract = contract;
         this.contract_tx = contract_tx;
         this.initiator_address= initiator_address;
     }
@@ -36,14 +38,6 @@ public class Initiator_Bundle {
 
     public void setHash(byte[] hash) {
         this.hash = hash;
-    }
-
-    public String getContract() {
-        return contract;
-    }
-
-    public void setContract(String contract) {
-        this.contract = contract;
     }
 
     public String getContract_tx() {
