@@ -66,7 +66,7 @@ public class Initiate {
     private static void atomic_swap_test() throws Exception {
 
         //Bob initiates Contract C1
-        Initiator_Bundle ibundle = AT_Interaction.initiate(
+        Initiator_Bundle ibundle = AT_Commands.initiate(
                 ALICEADDR,
                 AGREED_UPON_AMOUNT,
                 hash,
@@ -80,7 +80,7 @@ public class Initiate {
         Global.setCredentials(WalletUtils.loadCredentials("", ALICEWALLET));
 
         //Alice Audits C1
-        boolean success = AT_Interaction.iAudit(
+        boolean success = AT_Commands.iAudit(
                 ibundle.getContract_tx(),
                 AGREED_UPON_AMOUNT
         );
@@ -90,7 +90,7 @@ public class Initiate {
             System.out.println("C1 Audited By Alice And She Approved");
 
             //Alice Creates Participant Contract C2
-            Participator_Bundle pbundle = AT_Interaction.participate(
+            Participator_Bundle pbundle = AT_Commands.participate(
                     hash2, //Needed New Hash Because On Same Chain
                     BOBADDR,
                     AGREED_UPON_AMOUNT);
@@ -102,7 +102,7 @@ public class Initiate {
             Global.setCredentials(WalletUtils.loadCredentials("", BOBWALLET));
 
             //Bob Audits C2
-            boolean success2 = AT_Interaction.pAudit(
+            boolean success2 = AT_Commands.pAudit(
                     pbundle.getContract_tx(),
                     AGREED_UPON_AMOUNT
             );
@@ -112,7 +112,7 @@ public class Initiate {
                 System.out.println("Bob Audited C2 And He Approved");
 
                 //Bob Redeem ETH
-                AT_Interaction.redeem(
+                AT_Commands.redeem(
                         secret2,
                         hash2
                 );
@@ -124,7 +124,7 @@ public class Initiate {
                 Global.setCredentials(WalletUtils.loadCredentials("", ALICEWALLET));
 
                 //Alice Redeem Eth
-                AT_Interaction.redeem(
+                AT_Commands.redeem(
                         secret,
                         hash
                 );

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 
-public class AT_Interaction {
+public class AT_Commands {
     private final static BigInteger refundTime48 = BigInteger.valueOf(172800L); //48 Hours in seconds
     private final static BigInteger refundTime24 = BigInteger.valueOf(86400L);  //24 Hours In seconds
 
