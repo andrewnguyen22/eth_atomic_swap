@@ -150,7 +150,7 @@ public class AT_Interaction {
         ).send();
 
         //Prints Transaction Hash of Redeem
-        System.err.println("Redeem TX Hash\n" +
+        System.err.println("Redeem TX Hash:\n" +
                 t.getTransactionHash());
     }
 
